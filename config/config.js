@@ -220,7 +220,7 @@ var initGlobalConfig = function () {
     getGlobbedPaths: getGlobbedPaths,
     validateSessionSecret: validateSessionSecret
   };
-
+  config.agenda = undefined;
   return config;
 };
 
