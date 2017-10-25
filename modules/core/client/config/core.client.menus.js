@@ -5,9 +5,19 @@
     .module('core')
     .run(menuConfig);
 
-  menuConfig.$inject = ['menuService'];
+  menuConfig.$inject = ['menuService', '$window'];
 
-  function menuConfig(menuService) {
+  function menuConfig(menuService, $window) {
+
+    FB.init({
+      appId: '1643698609246838',
+      status: true,
+      cookie: true,
+      xfbml: true,
+      version: 'v2.5'
+    });
+    window.fbApiInit = true; //init flag
+    
     menuService.addMenu('account', {
       roles: ['user']
     });

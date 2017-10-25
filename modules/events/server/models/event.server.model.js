@@ -12,7 +12,7 @@ var mongoose = require('mongoose'),
 var EventSchema = new Schema({
   id: {
     type: String,
-    unique: 'event already exists',
+    unique: 'event already exists'
   },
   type: {
     type: String,
@@ -24,25 +24,25 @@ var EventSchema = new Schema({
     trim: true
   },
   coverPicture: {
-    type: String,
+    type: String
   },
   profilePicture: {
-    type: String,
+    type: String
   },
   description: {
-    type: String,
+    type: String
   },
   startTime: {
-    type: String,
+    type: String
   },
   endTime: {
-    type: String,
+    type: String
   },
   timeFromNow: {
-    type: String,
+    type: String
   },
   category: {
-    type: String,
+    type: String
   },
   ticketing: {},
   place: {}

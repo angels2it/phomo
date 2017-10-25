@@ -9,11 +9,15 @@ module.exports = {
         // bower:css
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-        'public/lib/angular-ui-notification/dist/angular-ui-notification.css'
+        'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
+        'public/lib/angular-loading-bar/build/loading-bar.min.css'
         // endbower
       ],
       js: [
         // bower:js
+        '//connect.facebook.net/en_US/sdk.js',
+        'public/lib/moment/min/moment.min.js',
+        'public/lib/lodash/lodash.js',
         'public/lib/angular/angular.js',
         'public/lib/angular-animate/angular-animate.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
@@ -24,6 +28,9 @@ module.exports = {
         'public/lib/angular-ui-notification/dist/angular-ui-notification.js',
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
+        '//maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyCewcYvjyUPTOGrH1pqnREGhea5ho2nTDs',
+        'public/lib/ngmap/build/scripts/ng-map.min.js',
+        'public/lib/angular-loading-bar/build/loading-bar.min.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

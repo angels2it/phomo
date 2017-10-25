@@ -27,7 +27,8 @@ module.exports = {
   facebook: {
     clientID: process.env.FACEBOOK_ID || '1643698609246838',
     clientSecret: process.env.FACEBOOK_SECRET || 'a110f8c4cb08c0eaa90550e64a9329fa',
-    callbackURL: '/api/auth/facebook/callback'
+    callbackURL: '/api/auth/facebook/callback',
+    scope: ['email', 'user_events', 'user_likes']
   },
   twitter: {
     username: '@TWITTER_USERNAME',

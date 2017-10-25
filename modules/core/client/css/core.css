@@ -41,3 +41,13 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
   display: inline;
 }
+header{
+  padding: 0px 10px !important;
+}
+.pac-container {
+    top: 52px !important;
+}
+#loading-bar .bar {
+  background: #fa3e3e;
+  height: 4px;
+}

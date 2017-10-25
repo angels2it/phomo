@@ -1,22 +1,40 @@
-<section>
-  <div class="page-header">
-    <h1>Events</h1>
-  </div>
-  <div class="list-group">
-    <a ng-repeat="event in vm.events"
-       ui-sref="events.view({ eventId: event._id })"
-       class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="event.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="event.user" ng-bind="event.user.displayName"></span>
-        <span ng-if="!event.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="event.name"></h4>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="vm.events.$resolved && !vm.events.length">
-    No Events yet, why don't you <a ui-sref="events.create">create one</a>?
-  </div>
-</section>
+<div map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCewcYvjyUPTOGrH1pqnREGhea5ho2nTDs">
+  <!-- <div id="searchbox">
+    <input places-auto-complete types="['geocode']" on-place-changed="placeMarker()" />
+  </div> -->
+  <ng-map center="[{{vm.lat}}, {{vm.lng}}]" zoom="16" default-style="false" style="height: calc(100vh - 50px) !important">
+    <marker id="pin" position="{{vm.latlng}}" on-dragend="vm.markerChange($event)" animation="Animation.BOUNCE" animation="DROP" draggable="{{!vm.isLoading}}" on-click="vm.showPinInfo()"></marker>
+    <custom-marker ng-repeat="event in vm.events" id="{{event.id}}" position="{{event.place.location.latitude}},{{event.place.location.longitude}}"
+      on-click="vm.showInfo($index)" title="{{event.name}}">
+      <div class="marker-user">
+        <img class="marker-user-icon" ng-src="{{event.profilePicture}}" />
+      </div>
+    </custom-marker>
+    <info-window id="infoPin">
+      <div ng-non-bindable="">
+        <a href="#" ng-click="vm.searchHere()">Search Here</a>
+      </div>
+    </info-window>
+    <info-window id="infowindow">
+      <div ng-non-bindable id="info">
+        <div id="siteNotice">
+          <img ng-src="{{vm.event.profilePicture}}" width="200" height="200" />
+        </div>
+        <h1 id="firstHeading" class="firstHeading">
+          <div id="headingIcon">
+            <div id="headingIconMonth">{{vm.event.startTime | date : 'MMM'}}</div>
+            <div id="headingIconDay">{{vm.event.startTime | date : 'dd'}}</div>
+          </div>
+          {{vm.event.name}}
+        </h1>
+        <div id="bodyContent">
+          {{vm.event.description}}
+        </div>
+        <div id="footContent">
+          <a href="https://facebook.com/events/{{vm.event.id}}" target="_new">Facebook</a><span ng-if="vm.event.ticketing"> | </span>
+          <a ng-if="vm.event.ticketing" href="{{vm.event.ticketing.ticket_uri}}" target="_new">Ticket</a>
+        </div>
+      </div>
+    </info-window>
+  </ng-map>
+</div>

@@ -7,7 +7,8 @@ var path = require('path'),
   mongoose = require('mongoose'),
   Event = mongoose.model('Event'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  _ = require('lodash');
+  _ = require('lodash'),
+  moment = require('moment');
 
 // Own modules
 var EventSearch = require("facebook-events-by-location-core");
@@ -85,9 +86,25 @@ exports.delete = function (req, res) {
  * List of Events
  */
 exports.list = function (req, res) {
-  var type = 'places';
-  if (req.query.type == 'pages')
-    type = 'pages';
+  // Instantiate EventSearch
+  var es = null;
+  switch (req.query.type) {
+    case "pages":
+      es = new EventSearchByPages();
+      break;
+    case "public":
+      Event.find({
+        $and: [
+          { startTime: { $gte: moment.unix(req.query.since).toDate().toISOString() } },
+          { startTime: { $lte: moment.unix(req.query.until).toDate().toISOString() } }]
+      }, function (err, events) {
+        res.json(events);
+      })
+      return;
+    default:
+      es = new EventSearch();
+      break;
+  }
   if (!req.query.lat || !req.query.lng) {
     res.status(500).json({ message: "Please specify the lat and lng parameters!" });
   } else if (!req.query.accessToken && !process.env.FEBL_ACCESS_TOKEN) {
@@ -137,17 +154,12 @@ exports.list = function (req, res) {
     if (req.query.until) {
       options.until = req.query.until;
     }
-
-    // Instantiate EventSearch
-    var es = type == 'places' ? new EventSearch() : new EventSearchByPages();
-
     // Search and handle results
-    es.search(options).then(function (events) {
-      res.json(events);
+    es.search(options).then(function (data) {
+      res.json(data.events);
     }).catch(function (error) {
       res.status(500).json(error);
     });
-
   }
 
 

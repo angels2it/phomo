@@ -1,0 +1,87 @@
+.container {
+    width: 100% !important;
+    padding: 0px;
+  }
+
+  #btnLogin {
+    position: fixed;
+    top: 50px;
+    z-index: 999;
+    background-color: #365899;
+    color: white;
+    padding: 5px;
+  }
+
+  #searchbox {
+    position: relative;
+    z-index: 999;
+    top: 10px;
+    padding-left: 125px;
+    padding-right: 65px;
+    height: 0;
+  }
+
+  #searchbox input {
+    width: 100%;
+    padding: 6px;
+  }
+
+  #info {
+    width: 600px;
+    overflow-y: hidden;
+  }
+
+  #firstHeading {
+    margin: 0px;
+    padding-bottom: 5px;
+  }
+
+  #headingIcon {
+    float: left;
+    height: 65px;
+    overflow: hidden;
+    width: 60px;
+    margin-right: 10px
+  }
+
+  #headingIconMonth {
+    color: #fa3e3e;
+    position: relative;
+    height: 25px;
+    text-align: center;
+  }
+
+  #headingIconDay {
+    position: relative;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  #bodyContent {
+    height: 105px;
+    overflow-y: hidden;
+  }
+
+  #footContent {
+    padding-top: 10px;
+  }
+
+  #siteNotice {
+    float: left;
+    margin-right: 10px;
+  }
+
+
+  .marker-user-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .marker-user-name {
+    font-size: medium;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    background-color: white;
+    margin-top: 5px;
+  }

@@ -13,7 +13,7 @@ module.exports = {
   // Binding to 127.0.0.1 is safer in production.
   host: process.env.HOST || '0.0.0.0',
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
+    uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/phomo',
     options: {
       /**
       * Uncomment to enable ssl certificate based authentication to mongodb
@@ -47,9 +47,10 @@ module.exports = {
     }
   },
   facebook: {
-    clientID: process.env.FACEBOOK_ID || 'APP_ID',
-    clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
-    callbackURL: '/api/auth/facebook/callback'
+    clientID: process.env.FACEBOOK_ID || '1643698609246838',
+    clientSecret: process.env.FACEBOOK_SECRET || 'a110f8c4cb08c0eaa90550e64a9329fa',
+    callbackURL: '/api/auth/facebook/callback',
+    scope: ['email','user_events','user_likes']
   },
   twitter: {
     username: '@TWITTER_USERNAME',

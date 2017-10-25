@@ -17,7 +17,7 @@ module.exports = function (app, db) {
     console.log('start get events...');
     var User = mongoose.model('User');
     User.find({ roles: 'admin' }, function (err, users) {
-      if (err != null)
+      if (err !== null)
         done();
       users.forEach(function (user) {
         console.log('get events by admin info - ' + user.displayName);

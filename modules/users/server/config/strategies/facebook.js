@@ -15,7 +15,7 @@ module.exports = function (config) {
     callbackURL: config.facebook.callbackURL,
     profileFields: ['id', 'name', 'displayName', 'emails', 'photos'],
     passReqToCallback: true,
-    scope: ['email']
+    scope: config.facebook.scope
   },
   function (req, accessToken, refreshToken, profile, done) {
     // Set the provider data and include tokens
