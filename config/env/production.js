@@ -5,8 +5,8 @@ var fs = require('fs');
 module.exports = {
   secure: {
     ssl: true,
-    privateKey: './config/sslcerts/phomo.key',
-    certificate: './config/sslcerts/phomo.me.crt'
+    privateKey: './config/sslcertss/phomo.key',
+    certificate: './config/sslcertss/phomo.me.crt'
   },
   port: process.env.PORT || 8443,
   // Binding to 127.0.0.1 is safer in production.
