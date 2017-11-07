@@ -24,9 +24,9 @@ module.exports.init = function init(callback) {
     // Init agenda
     var agenda = new Agenda({ db: { address: config.db.uri } });
     config.agenda = agenda;
-    agenda.on('ready', function () {
-      agenda.start();
-    });
+    // agenda.on('ready', function () {
+    //   agenda.start();
+    // });
     // Initialize express
     var app = express.init(db);
     if (callback) callback(app, db, config);
