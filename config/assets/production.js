@@ -15,6 +15,7 @@ module.exports = {
       ],
       js: [
         // bower:js
+        '//connect.facebook.net/en_US/sdk.js',
         'public/lib/angular/angular.min.js',
         'public/lib/angular-animate/angular-animate.min.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
@@ -28,6 +29,8 @@ module.exports = {
         'public/lib/ngmap/build/scripts/ng-map.min.js',
         'public/lib/moment/moment.js',
         'public/lib/lodash/lodash.js',
+        '//maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyCewcYvjyUPTOGrH1pqnREGhea5ho2nTDs',
+        'public/lib/ngmap/build/scripts/ng-map.min.js',
         'public/lib/angular-loading-bar/build/loading-bar.min.js',
         // endbower
       ]
