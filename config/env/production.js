@@ -8,11 +8,12 @@ module.exports = {
     privateKey: './config/sslcerts/phomo.key',
     certificate: './config/sslcerts/phomo.me.crt'
   },
-  port: process.env.PORT || 443,
+  port: process.env.PORT || 8443,
   // Binding to 127.0.0.1 is safer in production.
   host: process.env.HOST || '0.0.0.0',
+  domain: process.env.DOMAIN || 'phomo.me',
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'admin:Test!234@ds231205.mlab.com:31205') + '/phomo',
+    uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://phomo:VjT8DPCHNNQ5hDmtoEXIXPrFcKB8UBzDyo9odiwTbFLmWXFqLp7bdifIZBfZFzcqePSg9ovS1rLYGV6thOMZ0g==@phomo.documents.azure.com:10250/admin?ssl=true&sslverifycertificate=false',
     options: {
       /**
       * Uncomment to enable ssl certificate based authentication to mongodb
@@ -49,7 +50,7 @@ module.exports = {
     clientID: process.env.FACEBOOK_ID || '1643698609246838',
     clientSecret: process.env.FACEBOOK_SECRET || 'a110f8c4cb08c0eaa90550e64a9329fa',
     callbackURL: '/api/auth/facebook/callback',
-    scope: ['email','user_events','user_likes']
+    scope: ['email', 'user_events', 'user_likes']
   },
   twitter: {
     username: '@TWITTER_USERNAME',
