@@ -4,7 +4,7 @@ var fs = require('fs');
 
 module.exports = {
   secure: {
-    ssl: false,
+    ssl: true,
     privateKey: './config/sslcerts/phomo.key',
     certificate: './config/sslcerts/phomo.me.crt'
   },
