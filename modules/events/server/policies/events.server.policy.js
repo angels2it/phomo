@@ -35,7 +35,12 @@ exports.invokeRolesPolicies = function () {
     allows: [{
       resources: '/api/events',
       permissions: ['get']
-    }, {
+    },
+    {
+      resources: '/api/events/crawl',
+      permissions: ['get']
+    }, 
+    {
       resources: '/api/events/:eventId',
       permissions: ['get']
     }]

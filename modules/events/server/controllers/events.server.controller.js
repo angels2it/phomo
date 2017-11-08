@@ -173,7 +173,49 @@ exports.list = function (req, res) {
   //   }
   // });
 };
-
+exports.crawl = function (req, res) {
+  console.log('start get events');
+  var User = mongoose.model('User');
+  User.find({ roles: 'admin' }, function (err, users) {
+    if (err !== null)
+      res.json('done');
+    users.forEach(function (user) {
+      console.log('get events by admin info - ' + user.displayName);
+      var es = new EventSearchByPages();
+      // Search and handle results
+      es.search({
+        accessToken: user.llAccessToken
+      }).then(function (response) {
+        if (response.events == null || response.events.length == 0) {
+          res.json('done');
+          return;
+        }
+        var Event = mongoose.model('Event');
+        var time = 1;
+        function checkSaveEvent() {
+          if (time >= response.events.length)
+            res.json('done');
+          time++;
+        }
+        response.events.forEach(function (event) {
+          Event.findOne({ id: event.id }, function (err, e) {
+            if (e != null) {
+              checkSaveEvent();
+              return;
+            }
+            var sEvent = new Event(event);
+            sEvent.save(function () {
+              checkSaveEvent();
+            });
+          });
+        }, this);
+      }).catch(function (error) {
+        console.log(error);
+        res.json('done');
+      });
+    }, this);
+  });
+}
 /**
  * Event middleware
  */
