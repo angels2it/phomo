@@ -6,11 +6,14 @@
 var eventsPolicy = require('../policies/events.server.policy'),
   events = require('../controllers/events.server.controller');
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Events Routes
   app.route('/api/events').all(eventsPolicy.isAllowed)
     .get(events.list)
     .post(events.create);
+
+  app.route('/api/events/crawl').all(eventsPolicy.isAllowed)
+    .get(events.crawl);
 
   app.route('/api/events/:eventId').all(eventsPolicy.isAllowed)
     .get(events.read)

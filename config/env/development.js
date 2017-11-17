@@ -5,7 +5,7 @@ var defaultEnvConfig = require('./default');
 module.exports = {
   db: {
     // uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-dev',
-    uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'admin:Test!234@ds231205.mlab.com:31205') + '/phomo',
+    uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://phomo:VjT8DPCHNNQ5hDmtoEXIXPrFcKB8UBzDyo9odiwTbFLmWXFqLp7bdifIZBfZFzcqePSg9ovS1rLYGV6thOMZ0g==@phomo.documents.azure.com:10250/admin?ssl=true&sslverifycertificate=false',
     options: {},
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
