@@ -3,7 +3,7 @@
     <input places-auto-complete types="['geocode']" on-place-changed="placeMarker()" />
   </div> -->
   <ng-map center="[{{vm.lat}}, {{vm.lng}}]" zoom="16" default-style="false" style="height: calc(100vh - 50px) !important">
-    <marker id="pin" position="{{vm.latlng}}" on-dragend="vm.markerChange($event)" animation="Animation.BOUNCE" animation="DROP" draggable="{{!vm.isLoading}}" on-click="vm.showPinInfo()"></marker>
+    <marker id="pin" position="[{{vm.lat}}, {{vm.lng}}]" on-dragend="vm.markerChange($event)" animation="Animation.BOUNCE" animation="DROP" draggable="{{!vm.isLoading}}" on-click="vm.showPinInfo()"></marker>
     <custom-marker ng-repeat="event in vm.events" id="{{event.id}}" position="{{event.place.location.latitude}},{{event.place.location.longitude}}"
       on-click="vm.showInfo($index)" title="{{event.name}}">
       <div class="marker-user">
@@ -37,4 +37,5 @@
       </div>
     </info-window>
   </ng-map>
+  <div id="myLocation" ng-click="vm.gotoMyLocation()"></div>
 </div>

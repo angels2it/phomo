@@ -28,7 +28,10 @@
         dayInterval: vm.dayInterval
       };
       if (this.getPlace != null) {
-        var loc = this.getPlace().geometry.location;
+        var place = this.getPlace();
+        if (place == null || place.geometry == null || place.geometry.location == null)
+          return;
+        var loc = place.geometry.location;
         data.lat = loc.lat();
         data.lng = loc.lng();
       }

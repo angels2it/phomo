@@ -5,13 +5,12 @@
     .module('events')
     .controller('EventsListController', EventsListController);
 
-  EventsListController.$inject = ['EventsService', 'NgMap', '$http', '$timeout', '$rootScope', 'Authentication', '$q'];
+  EventsListController.$inject = ['EventsService', 'NgMap', '$http', '$timeout', '$rootScope', 'Authentication', '$q', '$scope'];
 
-  function EventsListController(EventsService, NgMap, $http, $timeout, $rootScope, Authentication, $q) {
+  function EventsListController(EventsService, NgMap, $http, $timeout, $rootScope, Authentication, $q, $scope) {
     var vm = this;
     var baseUrl = "http://localhost:3000/";
     function updateLatLng() {
-      vm.latlng = [vm.lat, vm.lng];
       searchEvents();
       getPublicEvents();
     }
@@ -166,6 +165,18 @@
         vm.lat = event.latLng.lat();
         vm.lng = event.latLng.lng();
       };
+      vm.gotoMyLocation = function () {
+        navigator.geolocation.getCurrentPosition(function (pos) {
+          if (pos.coords == null) {
+            alert('can not get your location');
+            return;
+          }
+          $scope.$apply(function () {
+            vm.lat = pos.coords.latitude;
+            vm.lng = pos.coords.longitude;
+          })
+        });
+      }
       vm.silentMode = true;
       var isSilent = false;
       var scopes = 'email,user_events,user_likes';

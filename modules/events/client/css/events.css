@@ -85,3 +85,17 @@
     background-color: white;
     margin-top: 5px;
   }
+
+  #myLocation{
+        position: fixed;
+    right: 10px;
+    bottom: 130px;
+    width: 28px;
+    height: 28px;
+    background-color: white;
+    background-image: url(../img/mylocation-sprite-1x.png);
+    background-size: 280px 28px;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
